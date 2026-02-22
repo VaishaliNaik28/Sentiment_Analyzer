@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Sentiment Analyzer</title>
+
+    <style>
+        body {
+            margin: 0;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background-color: #f7f8fa;
+        }
+
+        /* NAVBAR */
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 60px;
+            background-color: white;
+            border-bottom: 1px solid #eaeaea;
+        }
+
+        nav a {
+            text-decoration: none;
+            color: black;
+            font-weight: 600;
+        }
+
+        .github a {
+            background-color: black;
+            color: white;
+            padding: 8px 20px;
+            border-radius: 30px;
+            font-size: 14px;
+        }
+
+        /* HERO SECTION */
+        .container {
+            text-align: center;
+            padding-top: 120px;
+        }
+
+        h1 {
+            font-size: 48px;
+            margin-bottom: 10px;
+            font-weight: 700;
+        }
+
+        p {
+            color: #555;
+            margin-bottom: 40px;
+            font-size: 18px;
+        }
+
+        textarea {
+            width: 500px;
+            height: 130px;
+            padding: 15px;
+            border-radius: 12px;
+            border: 1px solid #ddd;
+            resize: none;
+            font-size: 14px;
+        }
+
+        textarea:focus {
+            outline: none;
+            border: 1px solid black;
+        }
+
+        button {
+            margin-top: 20px;
+            padding: 12px 30px;
+            border-radius: 30px;
+            border: none;
+            background-color: black;
+            color: white;
+            font-size: 15px;
+            cursor: pointer;
+            transition: 0.3s ease;
+        }
+
+        button:hover {
+            opacity: 0.85;
+        }
+
+        .result {
+            margin-top: 35px;
+            font-size: 22px;
+            font-weight: 600;
+            padding: 20px;
+            display: inline-block;
+            border-radius: 12px;
+        }
+
+        .negative {
+            background-color: #fdecea;
+        }
+
+        .neutral {
+            background-color: #fff8e1;
+        }
+
+        .positive {
+            background-color: #e8f5e9;
+        }
+
+    </style>
+</head>
+
+<body>
+
+    <nav>
+        <div class="logo">
+            <a href="/">Sentiment Analyzer</a>
+        </div>
+        <div class="github">
+            <a href="YOUR_GITHUB_LINK" target="_blank">GitHub</a>
+        </div>
+    </nav>
+
+    <div class="container">
+        <h1>AI-Powered Sentiment Analysis</h1>
+        <p>Analyze text instantly using a 3-class machine learning model.</p>
+
+        <form method="POST">
+            <textarea name="text" placeholder="Enter your text here..." required></textarea><br>
+            <button type="submit">Analyze</button>
+        </form>
+
+        {% if prediction %}
+            {% if "Negative" in prediction %}
+                <div class="result negative">{{ prediction }}</div>
+            {% elif "Neutral" in prediction %}
+                <div class="result neutral">{{ prediction }}</div>
+            {% elif "Positive" in prediction %}
+                <div class="result positive">{{ prediction }}</div>
+            {% endif %}
+        {% endif %}
+
+    </div>
+
+</body>
+</html>
